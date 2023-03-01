@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
@@ -27,7 +28,7 @@ class ProjectController extends Controller
 	 */
 	public function create()
 	{
-		//
+		return view('admin.projects.create');
 	}
 
 	/**
@@ -38,7 +39,19 @@ class ProjectController extends Controller
 	 */
 	public function store(StoreProjectRequest $request)
 	{
-		//
+		$form_data = $request->validated();
+
+		$slug = Project::generateSlug($request->title); //richiamo la funzione creata nel model per generare lo slug
+		//Aggiungo una coppia chiave = valore all'array form_data
+		$form_data['slug'] = $slug;
+
+		$newProject = new Project();
+		$newProject->fill($form_data);
+
+		$newProject->save();
+		//QUESTE TRE OPERAZIONE CORRISPONDONO A:
+		// $newProject = Project::create($form_data); 
+		return redirect()->route('admin.projects.index')->with('message', 'Progetto creato correttamente');
 	}
 
 	/**
