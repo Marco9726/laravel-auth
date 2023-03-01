@@ -3,8 +3,11 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="col-12 my-5">
+		<div class="col-10 my-5">
 			<h2>Aggiungi nuovo progetto</h2>
+		</div>
+		<div class="col-2 my-5">
+			<a href="{{ route('admin.projects.index')}}" class="btn btn-small btn-warning">Ritorna ai progetti</a>
 		</div>
 		<div class="col-12">
 			<form action="{{ route('admin.projects.store')}}" method="POST">

@@ -51,7 +51,7 @@ class ProjectController extends Controller
 		$newProject->save();
 		//QUESTE TRE OPERAZIONE CORRISPONDONO A:
 		// $newProject = Project::create($form_data); 
-		return redirect()->route('admin.projects.index')->with('message', 'Progetto creato correttamente');
+		return redirect()->route('admin.projects.index')->with('message', 'Progetto creato correttamente'); //passo alla view anche la variabile message
 	}
 
 	/**
@@ -62,7 +62,7 @@ class ProjectController extends Controller
 	 */
 	public function show(Project $project)
 	{
-		//
+		return view('admin.projects.show', compact('project'));
 	}
 
 	/**
