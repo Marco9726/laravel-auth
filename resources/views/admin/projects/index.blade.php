@@ -2,21 +2,37 @@
 
 @section('content')
 
-<div class="container p-4">
-	@if(session('message')) 
-		<div class="alert alert-success">
-			{{ session('message') }}
+<div class="container">
+	<div class="row">
+		<div class="col-12 my-5">
+			<h2>Progetti</h2>
 		</div>
-	@endif
-	<div class="row flex-wrap gap-4 pt-3">
-		<a href="{{ route('admin.projects.create')}}" class="btn btn-small btn-success">Aggiungi progetto</a>
-		@foreach ($projects as $project)
-			<div class="card my-card">
-				<h4 class="card-title">{{$project->title}}</h4>
-				<div class="card-text">{{$project->description}}</div>
+		@if(session('message')) 
+			<div class="alert alert-success">
+				{{ session('message') }}
 			</div>
-		@endforeach
+		@endif
+		<div class="col-12">
+			<table class="table table-striped">
+				<thead>
+					<th>Id</th>
+					<th>Titolo</th>
+					<th>Slug</th>
+					<th>Azioni</th>
+				</thead>
+				<tbody>
+					@foreach ($projects as $project)
+					<tr>
+						<td>{{ $project->id }}</td>
+						<td>{{ $project->title }}</td>
+						<td>{{ $project->slug }}</td>
+						<td></td>
+					</tr>
+					@endforeach
+	
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
-
 @endsection
