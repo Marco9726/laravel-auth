@@ -7,8 +7,18 @@
 			<h2>Aggiungi nuovo progetto</h2>
 		</div>
 		<div class="col-2 my-5">
+			{{-- link per tornare alla view index --}}
 			<a href="{{ route('admin.projects.index')}}" class="btn btn-small btn-warning">Ritorna ai progetti</a>
 		</div>
+		@if($errors->any())
+		<div class="alert alert-danger">
+			<ul class="list-unstyled m-0">
+			@foreach ($errors->all() as $error)
+				<li>{{ $error }}</li>
+			@endforeach
+			</ul>
+		</div>
+		@endif
 		<div class="col-12">
 			<form action="{{ route('admin.projects.store')}}" method="POST">
 				@csrf

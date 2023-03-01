@@ -28,4 +28,13 @@ class StoreProjectRequest extends FormRequest
 			'description' => ['nullable']
 		];
 	}
+
+	public function messages()
+	{
+		return [
+			'title.required' => 'Non hai inserito un titolo',
+			'title.unique' => 'Il titolo inserito è già esistente',
+			'title.max' => 'La lunghezza del titolo non può essere superiore a :max caratteri'
+		];
+	}
 }
