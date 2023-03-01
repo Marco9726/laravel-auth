@@ -41,6 +41,18 @@
 							<a href="{{ route('admin.projects.edit' , $project->slug )}}" title="Modifica progetto" class="btn btn-sm btn-warning">
 								<i class="fas fa-edit"></i>
 							</a>
+							{{-- <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#delete-project-modal" data-postid="{{ $project->id }}">
+								<i class="fas fa-trash"></i>
+							</button> --}}
+
+							{{-- form con button per eliminare il progetto --}}
+							<form action="{{ route('admin.projects.destroy', $project->slug )}}" class="d-inline-block" method="POST">
+								@csrf
+								@method('DELETE')
+								<button type="submit" class="btn btn-sm btn-danger">
+									<i class="fas fa-trash"></i>
+								</button> 
+							</form>
 						</td>
 					</tr>
 					@endforeach
@@ -50,4 +62,5 @@
 		</div>
 	</div>
 </div>
+{{-- @include('partials.modal') includo la modal --}}
 @endsection
