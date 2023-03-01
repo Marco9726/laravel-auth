@@ -34,8 +34,12 @@
 						<td>{{ $project->slug }}</td>
 						<td>
 							{{-- link alla view show per visualizzare il progetto --}}
-							<a href="{{ route('admin.projects.show' , $project->slug )}}">
+							<a href="{{ route('admin.projects.show' , $project->slug )}}" title="Visualizza progetto" class="btn btn-sm btn-primary">
 								<i class="fas fa-eye"></i>
+							</a>
+							{{-- link alla view edit per modificare il progetto --}}
+							<a href="{{ route('admin.projects.edit' , $project->slug )}}" title="Modifica progetto" class="btn btn-sm btn-warning">
+								<i class="fas fa-edit"></i>
 							</a>
 						</td>
 					</tr>
